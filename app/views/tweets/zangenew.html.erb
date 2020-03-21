@@ -1,0 +1,83 @@
+<head>
+	<!-- ビューポートの設定 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<div id="zangeindexcontainer">
+<header class="header-nav">
+  <div class="indextitle">
+  <a href="/zenkoutweets/"><img src="/images/angel.png" width="50px" height="50px"></a>
+  </div>
+    <nav><a href="/about">About</a></nav>
+    <nav><a href="/hells">Hells</a></nav>
+    <nav><a href="/heaven">Heaven</a></nav>
+    <nav><a href="/links">Links</a></nav>
+</header>
+<div class="heart">
+    <img src="/images/heart.png" width="20px" height="20px">
+</div>
+    <% if flash[:notsave] %>
+        <script>
+            alert('保存できませんでした。入力忘れはありませんか？削除キーは半角数字4桁です。')
+        </script>
+    <% end %>
+    <div class="newtitle">
+        投稿フォーム
+    </div>
+
+    <%= form_for(@tweet, :url => { controller:'tweets', action:'create'})do |f| %>
+    <div class="tweet_box"> 
+
+        <div class="category_box">
+            <%= f.label :カテゴリー %><br>
+            <%= f.select :category,
+            [["懺悔","懺悔"]] %>
+        </div>
+
+        <div class="name_box">
+            <%= f.label :名前 %>
+            <br>
+            <%= f.text_field :name, :size=>"15" %>
+        </div>
+
+        <div class="title_box">
+            <%= f.label :タイトル %>
+            <br>
+            <%= f.text_field :title, :size=>"20"  %>
+        </div>
+
+        <div class="content_box">
+            <%= f.label :善行の内容 %>
+            <br>
+            <%= f.text_area :content, :size=>"65x7" %>
+        </div>
+
+        <div class="deletekey_box">
+            <%= f.label :"削除キー(半角数字4桁)" %>
+            <br>
+            <%= f.number_field :deletekey, :size=> "4" %>
+        </div>
+
+        <div class="submit_box">
+            <%= f.submit :投稿する, class: 'btn btn-success'%>
+        </div>
+            
+    <% end %>
+    </div>
+
+    <div class="fire">
+      <img src="/images/fire.png" width="40px" height="40px" class="fireimg">
+    </div>
+
+    <div class = "oni">
+    </div>
+
+    <div class="homelinks">
+        <div class="zenkoulink"><%= link_to "善行の部屋に戻る", zenkoutweets_path %></div>
+        <div class="zangelink"><%= link_to "懺悔の部屋に戻る", zangetweets_path %></div>
+    </div>
+
+    <footer>
+  　 Copyright © M.N All Rights Reserved.
+    </footer>
+</div>

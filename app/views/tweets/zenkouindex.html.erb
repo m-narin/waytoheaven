@@ -1,0 +1,375 @@
+<head>
+	<!-- ビューポートの設定 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<div id="zenkouindexcontainer">
+  <header class="header-nav">
+    <div class="indextitle">
+    <a href="/zenkoutweets/"><img src="/images/angel.png" width="50px" height="50px"></a>
+    </div>
+    <div class="search_box">
+      <%= form_tag({controller:"tweets",action:"zenkouindex"}, method: :get) do %>
+      <%= submit_tag '🔎'  %>
+      <%= text_field_tag :search %>
+    <% end %>
+    </div>
+    <nav><a href="/about">About</a></nav>
+    <nav><a href="/hells">Hells</a></nav>
+    <nav><a href="/heaven">Heaven</a></nav>
+    <nav><a href="/links">Links</a></nav>
+  </header>
+
+  <div class="heart">
+    <img src="/images/heart.png" width="20px" height="20px">
+  </div>
+
+  <% if flash[:zenkoucreate] %>
+      <script>
+          alert('あなたの善行はきっと感謝されるでしょう')
+      </script>
+  <% end %>
+
+  <% if flash[:likenotice] %>
+      <script>
+        alert('すでに感謝しています')
+      </script>
+  <% end %>
+
+  <% if flash[:likecreate] %>
+      <script>
+        alert('あなたの感謝でその人は救われるでしょう')
+      </script>
+  <% end %>
+
+  <% if flash[:tweetdelete] %>
+      <script>
+        alert('心の中にしまっておくべきこともあります')
+      </script>
+  <% end %>
+
+  <div class="main">
+    <div class="explanation">
+      <div class = "explanationtitle">
+        天国への階段
+      </div>
+      <div class="explanationscript">
+        <p>あなたの日ごろの行いは天国行きか地獄行きかを判定します</p>
+        <p>たくさんの徳を積んで天国行きを目指しましょう</p>
+        <p>あなたは<<%= See.count %>>人目の訪問者です</p>
+      </div>
+    </div>
+    <br>
+    <div class="switchbtn">
+      <div class="btnzenkouon"><a href="/zenkoutweets">善行の部屋</a></div>
+      <div class="btnzange"><a href="/zangetweets">懺悔の部屋へ</a></div>
+    </div>
+    
+    <div class="top">
+      善行一覧(善行の数=<%= Tweet.where(category: "善行").count %>)
+    </div>
+    
+    <div class="contents">
+      <% @tweets.where(category: "善行").each do |t| %>
+      <% if t.likes.count >= t.heavennumber %>
+        <div style="position: relative;
+        padding: 0.5em 0.7em 0em 0.7em;
+        margin: 0.5em 0.5em;
+        width: 80%;
+        background: rgba(77, 240, 199, 0.5);
+        color: #1a2f49;
+        border: solid 1px gray;
+        border-radius: 5px;">
+
+        <% elsif t.hellnumber == 0 %> 
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.1);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==1 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.17);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==2 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.24);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==3 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.31);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==4 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.38);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==5 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.45);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==6 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.52);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==7 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.6);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% end %>
+          <div class="title">
+            <p><%= t.title %></p>
+          </div>
+          <div class="content">
+            <p><%= t.content %></p>
+          </div>
+          <div class="information">
+            <%= time_ago_in_words(t.created_at) %>前<br>
+            [<%= t.name %>]→
+            <% if t.likes.count >= t.heavennumber %>
+            <a href="/heaven"><span>天国行き</span></a>
+            <% elsif t.hellnumber == 0 %>
+            <a href="/hells">等活地獄行き</a>
+            <% elsif t.hellnumber ==1 %>
+            <a href="/hells">黒縄地獄行き</a>
+            <% elsif t.hellnumber ==2 %>
+            <a href="/hells">衆合地獄行き</a>
+            <% elsif t.hellnumber ==3 %>
+            <a href="/hells">叫喚地獄行き</a>
+            <% elsif t.hellnumber ==4 %>
+            <a href="/hells">大叫喚地獄行き</a>
+            <% elsif t.hellnumber ==5 %>
+            <a href="/hells">焦熱地獄行き</a>
+            <% elsif t.hellnumber ==6 %>
+            <a href="/hells">大焦熱地獄行き</a>
+            <% elsif t.hellnumber ==7 %>
+            <a href="/hells">無間地獄行き</a>
+            <% end %>
+            <br>
+            <% if t.heavennumber-t.likes.count >= 1  %>
+              残り(<%= t.heavennumber-t.likes.count %>)回の感謝で天国行き
+            <% end %>
+            <div class="like">
+              <div class="see">閲覧数 = (<%=  t.impressionist_count(:filter=>:session_hash) %>)</div>
+              <div class="word">感謝する</div>
+              <div class="btn">
+                <%= button_to '', tweet_likes_path(t), :class => 'thankbtn' %>
+              </div>
+              
+              <div class="likenumber">
+                (<%= t.likes.count %>)
+              </div>
+              <div class="commentbtn">
+                <a href="/tweets/<%= t.id %>"><img src="/images/comment.jpg" width="30px" height="30px"></a>
+              </div>
+              <div class="commentnumber">
+                (<%= t.comments.count %>)
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @tweets.where(category: "善行") %>
+
+    <div class="ranktop">
+      感謝ランキング
+    </div>
+
+    <div class="rankcontents">
+    <% @zenkoutweet_ranking.each do |t| %>
+      <% if t.likes.count >= t.heavennumber %>
+        <div style="position: relative;
+        padding: 0.5em 0.7em 0em 0.7em;
+        margin: 0.5em 0.5em;
+        width: 80%;
+        background: rgba(77, 240, 199, 0.5);
+        color: #1a2f49;
+        border: solid 1px gray;
+        border-radius: 5px;">
+
+        <% elsif t.hellnumber == 0 %> 
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.1);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==1 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.17);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==2 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.24);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==3 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.31);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==4 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.38);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==5 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.45);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==6 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.52);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% elsif t.hellnumber ==7 %>
+          <div style="position: relative;
+          padding: 0.5em 0.7em 0em 0.7em;
+          margin: 0.5em 0.5em;
+          width: 80%;
+          background: rgba(255, 0, 0, 0.6);
+          color: #1a2f49;
+          border: solid 1px gray;
+          border-radius: 5px;">
+        <% end %>
+        <div class="title">
+          <p><%= t.title %></p>
+        </div>
+        <div class="content">
+          <p><%= t.content %></p>
+        </div>
+        <div class="information">
+        <%= time_ago_in_words(t.created_at) %>前<br>
+        [<%= t.name %>]→
+        <% if t.likes.count >= t.heavennumber %>
+        <a href="/heaven">天国行き</a>
+        <% elsif t.hellnumber == 0 %>
+        <a href="/hells">等活地獄行き</a>
+        <% elsif t.hellnumber ==1 %>
+        <a href="/hells">黒縄地獄行き</a>
+        <% elsif t.hellnumber ==2 %>
+        <a href="/hells">衆合地獄行き</a>
+        <% elsif t.hellnumber ==3 %>
+        <a href="/hells">叫喚地獄行き</a>
+        <% elsif t.hellnumber ==4 %>
+        <a href="/hells">大叫喚地獄行き</a>
+        <% elsif t.hellnumber ==5 %>
+        <a href="/hells">焦熱地獄行き</a>
+        <% elsif t.hellnumber ==6 %>
+        <a href="/hells">大焦熱地獄行き</a>
+        <% elsif t.hellnumber ==7 %>
+        <a href="/hells">無間地獄行き</a>
+        <% end %>
+            <br>
+            <% if t.heavennumber-t.likes.count >= 1  %>
+              残り(<%= t.heavennumber-t.likes.count %>)回の感謝で天国行き
+            <% end %>
+          <div class="like">
+            <div class="see">閲覧数 = (<%=  t.impressionist_count(:filter=>:session_hash) %>)</div>
+            <div class="word">感謝する</div>
+            <div class="btn">
+                <%= button_to '', tweet_likes_path(t), :class => 'thankbtn' %>
+            </div>
+            
+            <div class="likenumber">
+              (<%= t.likes.count %>)
+            </div>
+            <div class="commentbtn">
+              <a href="/tweets/<%= t.id %>"><img src="/images/comment.jpg" width="30px" height="30px"></a>
+            </div>
+            <div class="commentnumber">
+              (<%= t.comments.count %>)
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+    
+      <a class="tweetbtn" href="/tweets/zenkounew">善行投稿</a>
+
+    <div class="fire">
+      <img src="/images/fire.png" width="40px" height="40px" class="fireimg">
+    </div>
+    <div class = "oni">
+    </div>
+
+    <div class = "sharebtn">
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+
+    <p id="pagetop"><a href="#">↑ </a></p>
+  </div>
+  <footer>
+  　 Copyright © M.N All Rights Reserved.
+  </footer>
+  
+</div>
+
+

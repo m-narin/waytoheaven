@@ -1,0 +1,906 @@
+// Place all the styles related to the tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ヘッダー&メイン設定
+header{
+    height: 60px;
+    background-color: rgba($color: gray, $alpha: 0.4);
+}
+
+.header-nav {
+    height: 60px;
+    width: 100%;
+    padding-right: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .indextitle{
+    animation: r3 1s linear infinite alternate;
+    margin-left: 2%;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+  }
+ 
+  @keyframes r3 {
+    0%   { transform: rotate(-30deg); }
+    100% { transform: rotate(30deg); }
+  }
+
+.heart{
+  margin-left: 80px; 
+}
+.heart img{
+  animation: animation04 1s infinite ease 0.8s both;
+}
+@keyframes animation04 {
+  from {
+  transform: translate(0,0);
+  }
+  to {
+  transform: translate(100px,70px);
+  }
+  }
+
+  .search_box{
+    margin-right: 5%;
+  }
+
+  nav {
+    margin-right: 2%;
+  }
+  nav a{
+    color: rgb(197, 20, 159);
+    display: inline-block;
+    transition: .3s;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  nav a:hover{
+    color: red;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.3);
+  }
+
+//鬼
+.fire{
+  text-align: right;
+  width: 100%;
+}
+.fireimg{
+  animation: animation05 1.5s infinite ease 0.8s both;
+  margin-left: auto;
+  margin-right: 5%;
+}
+@keyframes animation05 {
+  from {
+  transform: translate(0,0);
+  }
+  to {
+  transform: translate(0px,-150px);
+  }
+  }
+.oni{
+  animation: r3 1s linear infinite alternate;
+  margin-left: auto;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  width: 100px;
+  height: 100px;
+  background-image: url("/images/oni.png");
+  background-size: cover;
+}
+@keyframes r3 {
+  0%   { transform: rotate(-30deg); }
+  100% { transform: rotate(30deg); }
+}
+
+
+//マウスオーバー
+a{
+  display: inline-block;
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+a:hover{
+  color: red;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+
+// indexページ
+#zangeindexcontainer{
+  color: rgb(92, 17, 92);
+  background-image: url("/images/zangeback.png");
+  background-size: cover;
+}
+
+#zenkouindexcontainer{
+  color: rgb(92, 17, 92);
+  background-image: url("/images/zenkouback.png");
+  background-size: cover;
+}
+
+.explanation{
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 120px;
+}
+
+.explanationtitle{
+  text-shadow: 0px 0px 20px rgb(197, 20, 159);
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.explanationscript{
+  text-align: center;
+}
+// paginate
+.pagination{
+  margin: auto;
+  width: 55%;
+  display: flex;
+  justify-content: flex-start;
+}
+.pagination span{
+  background-color: rgba(158, 158, 158, 0.4);
+  text-align: center;
+  width: 50px;
+  border: solid 1px #344963;
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.pagination span:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.pagination span a:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+// スイッチボタン
+.switchbtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.btnzange{
+  color: rgb(92, 17, 92);
+  text-align: center;
+  padding: 0.5em 1em;
+  width: 150px;
+  height: 40px;
+
+  background-color: rgba(126,123,123, 0.2);
+  border: solid 1px #344963;
+  border-radius: 0 30px 30px 0;
+  font-size: 16px;
+}
+.btnzange a{
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.btnzange:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+.btnzange a:hover{
+  color: red;
+}
+
+.btnzenkou{
+  color: rgb(92, 17, 92);
+  text-align: center;
+  padding: 0.5em 1em;
+  width: 150px;
+  height: 40px;
+
+  background-color:rgba(57, 137, 163, 0.2);
+  border: solid 1px #344963;
+  border-radius: 30px 0 0 30px;
+  transition: .4s;
+  font-size: 16px;
+}
+
+.btnzenkou a{
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.btnzenkou:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+.btnzenkou a:hover{
+  color: red;
+}
+
+.btnzangeon{
+  color: rgb(92, 17, 92);
+  text-align: center;
+  padding: 0.5em 1em;
+  width: 150px;
+  height: 40px;
+
+  background-color: rgb(158, 158, 158);
+  border: solid 1px #344963;
+  border-radius: 0 30px 30px 0;
+  transition: .4s;
+  font-size: 16px;
+}
+
+.btnzangeon a{
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.btnzangeon:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+.btnzangeon a:hover{
+  color: red;
+}
+
+.btnzenkouon{
+  color: rgb(92, 17, 92);
+  text-align: center;
+  padding: 0.5em 1em;
+  width: 150px;
+  height: 40px;
+
+  background-color:rgb(69,181,218);
+  border: solid 1px #344963;
+  border-radius: 30px 0 0 30px;
+  transition: .4s;
+  font-size: 16px;
+}
+
+.btnzenkouon a{
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.btnzenkouon:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+.btnzenkouon a:hover{
+  color: red;
+}
+
+
+
+// 投稿一覧
+.explanationtitle{
+  font-size: 30px;
+}
+.top{
+  font-size: 20px;
+  text-align: center;
+}
+.contents{
+  margin: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+}
+
+.ranktop{
+  margin-top: 40px;
+  font-size: 20px;
+  text-align: center;
+}
+.rankcontents{
+  margin: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #1a2f49;
+  font-size: 16px;
+}
+
+.ranklist{  
+  position: relative;
+  padding: 0.5em 0.7em 0em 0.7em;
+  margin: 0.5em 0.5em;
+  width: 80%;
+  background: #A6D8DF;
+  color: #1a2f49;
+  border: solid 1px gray;
+  border-radius: 5px;
+}
+
+.title{
+    color: rgb(92, 17, 92);
+    text-align: center;
+}
+
+.content{
+    color: rgb(92, 17, 92);
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.information{
+    color: rgb(92, 17, 92);
+    padding-top: 50px;
+    text-align: right;
+}
+.information a{
+  color: rgb(197, 20, 159);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.information a:hover{
+  color: red;
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.2);
+}
+.commentbtn{
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.commentbtn:hover{
+  box-shadow: 0px 0px 10px 5px black, 0px 3px 20px 0px;
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.list p {
+    margin: 0; 
+    padding: 0;
+}
+.see{
+  margin-right: auto;
+}
+
+// 投稿フォームへのリンク
+.tweetbtn:hover{
+  color: red;
+  background-color: rgb(154, 211, 64);
+  border: solid 1px green;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.12), 0px 3px 20px 0px;
+}
+.tweetbtn {
+  position: fixed;
+  bottom: 100px;
+  right: 15%;
+  font-size: 20px;
+  padding: 10px;
+  display: inline-block;
+  color: rgb(197, 20, 159);
+  width: 150px;
+  text-align: center;
+  background-color: rgba($color:rgb(154, 211, 64), $alpha: 0.6);
+  border: solid 1px green;
+  border-radius: 20px;
+}
+
+.sharebtn{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.sharebtn a:hover{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+
+/*PAGE TOP設定
+---------------------------------------------------------------------------*/
+#pagetop {
+	clear: both;
+	padding-bottom: 40px;
+}
+#pagetop a {
+	color: #FFF;		/*文字色*/
+	font-size: 20px;	/*文字サイズ*/
+	background: grey;	/*背景色*/
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	float: right;
+	border-radius: 30px;	/*角丸のサイズ*/
+	width: 50px;
+	line-height: 50px;
+}
+/*マウスオン時*/
+#pagetop a:hover {
+	background-color: #999;	/*背景色*/
+	color: red;			/*文字色*/
+}
+
+//   フッター
+footer { 
+  width: 100%;
+  bottom: 0px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  height: 35px;
+}
+
+
+  // showページ
+  #zangeshowcontainer{
+    color: rgb(92, 17, 92);
+    background-image: url("/images/zangeback.png");
+    background-size: cover;
+  }
+  #zenkoushowcontainer{
+    color: rgb(92, 17, 92);
+    background-image: url("/images/zenkouback.png");
+    background-size: cover;
+  }
+  .showcontents{
+    width: 70%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #1a2f49;
+    font-size: 16px;
+  }
+  
+  .showlist{
+    position: relative;
+    padding: 0.5em 0.7em 0em 0.7em;
+    margin-top: auto;
+    width: 80%;
+    background: #A6D8DF;
+    color: #1a2f49;
+    border: solid 1px gray;
+    border-radius: 5px;
+  }
+
+.like{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.comments{
+  padding-top: 50px;
+  text-align: center;
+  align-items: center;
+}
+
+#com-form{
+  text-align: center;
+}
+
+.commenttop{
+  text-align: center;
+}
+
+.commentsshow{
+  padding: 0.5em 0.7em 0em 0.7em;
+  display: block;
+  margin: auto;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: solid 1px gray;
+  border-radius: 5px;
+}
+.commentsshow{
+  text-align: center;
+}
+
+.commentcontents{
+  text-align: left;
+}
+
+.commentname{
+  text-align: right;
+}
+.commentinformation{
+  text-align: right;
+}
+
+.deletecontainer{
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+}
+.delete{
+  margin-left: auto;
+}
+.homelinks{
+  margin-left: 10%;
+  width: 90%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.zenkoulink{
+  padding: 0.5em 1em;
+
+  width: 150px;
+  height: 30px;
+  border: solid 1px #344963;
+  border-radius: 30px 0 0 30px;
+  background-color:#7ccbe5;
+  color:black;
+  transition: .4s;
+  font-size: 13px;
+}
+.zenkoulink a{
+  color: rgb(197, 20, 159);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.zenkoulink:hover{
+  color: red;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+.zenkoulink a:hover{
+  color: red;
+}
+.zangelink{
+  padding: 0.5em 1em;
+  
+  width: 150px;
+  height: 30px;
+  background-color: rgb(202, 197, 197);
+  color:black;
+  border: solid 1px #344963;
+  border-radius: 30px 0 0 30px;
+  transition: .4s;
+  font-size: 13px;
+}
+.zangelink a{
+  color: rgb(197, 20, 159);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.zangelink:hover{
+  color: red;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+.zangelink a:hover{
+  color: red;
+}
+
+
+// 感謝ボタン
+
+.thankbtn {
+  width: 30px;
+  height: 30px;
+  background-image: url("/images/thank.png");
+  background-size: cover;
+}
+.thankbtn:hover{
+  box-shadow: 0px 0px 10px 10px pink, 0px 3px 20px 0px;
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+
+.likenumber{
+  margin-right: 25px;
+}
+
+.links{
+  text-align: left;
+  margin-left: 10%;
+  padding-bottom: 40px;
+}
+
+// 投稿ページ
+.newtitle{
+  font-size: 30px;
+  text-align: center;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+.tweet_box{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 600px;
+  height: 600px;
+  margin-bottom: 20px;
+  align-items: left;
+  border: solid 2px gray;
+  border-radius: 5px;
+}
+.category_box{
+  text-align: left;
+  margin-left: 5px;
+}
+.name_box{
+  text-align: left;
+  margin-left: 5px;
+}
+.title_box{
+  text-align: left;
+  margin-left: 5px;
+}
+.content_box{
+  text-align: left;
+  margin-left: 5px;
+  height: 200px;
+}
+.deletekey_box{
+  padding-top: 20px;
+  text-align: left;
+  margin-left: 5px;
+}
+.submit_box{
+  display: inline-block;
+  text-align: left;
+  margin-left: 5px;
+}
+
+// aboutページ
+#hellindexcontainer{
+  color: rgb(92, 17, 92);
+  background-image: url("/images/hell.png");
+  background-size: cover;
+}
+.first-block{
+  height: 100px;
+}
+
+.aboutscript{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.abouttitle{
+  text-shadow: 0px 0px 20px rgb(197, 20, 159);
+  text-align: center;
+  padding-top: 50px;
+  font-size: 30px;
+}
+
+// hellページ
+.hellpagetitle{
+  text-shadow: 0px 0px 20px rgb(197, 20, 159);
+  text-align: center;
+  font-size: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+.helltitle{
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+.hellmain{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 1800px;
+}
+
+.hell{
+  width: 40%;
+  height: 300px;
+}
+
+.hellcontents{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hell1image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell1.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+
+.hell1image:hover {
+  transform: rotateZ( 360deg );
+}
+.hell2image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell2.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+.hell2image:hover {
+  transform: rotateZ( 360deg );
+}
+.hell3image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell3.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+.hell3image:hover {
+  transform: rotateZ( 360deg );
+}
+.hell4image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell4.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+.hell4image:hover {
+  transform: rotateZ( 360deg );
+}
+.hell5image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell5.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+.hell5image:hover {
+  transform: rotateZ( 360deg );
+}
+.hell6image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell6.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+.hell6image:hover {
+  transform: rotateZ( 360deg );
+}
+.hell7image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell7.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+.hell7image:hover {
+  transform: rotateZ( 360deg );
+}
+.hell8image{
+  width: 80%;
+  height: 250px;
+  background-image: url("/images/hell8.jpg");
+  background-size: cover;
+  transition: 1.0s;
+  transform: rotateZ( 0deg );
+}
+.hell8image:hover {
+  transform: rotateZ( 360deg );
+}
+.hellscript{
+  padding-top: 5px;
+}
+
+// linksページ
+.linksmain{
+  margin: auto;
+  width: 70%;;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.linkstitle{
+  text-shadow: 0px 0px 20px rgb(197, 20, 159);
+  text-align: center;
+  padding-top: 50px;
+  font-size: 30px;
+}
+.linkscript{
+  margin-top: 30px;
+}
+.otherlinks{
+  color: rgb(197, 20, 159);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.otherlinks a{
+  color: rgb(197, 20, 159);
+}
+.otherlinks a:hover{
+  color: red;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.3);
+}
+.mail{
+  margin-top: 100px;
+}
+
+.aboutmain{
+  margin: auto;
+  width: 70%;;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.aboutscript{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+// heavenページ
+.heavenmain{
+  padding-top: 20px;
+  margin: auto;
+  width: 70%;;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.heaventitle{
+  text-shadow: 0px 0px 20px rgb(197, 20, 159);
+  text-align: center;
+  padding-top: 40px;
+  font-size: 30px;
+}
+.heavenimage{
+  width: 100%;
+  height: 300px;
+  background-image: url("/images/heaven.jpg");
+  background-size: cover;
+}
+.heavenscript{
+ margin-bottom: 30px;
+}
