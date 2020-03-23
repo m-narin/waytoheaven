@@ -98,10 +98,10 @@ class TweetsController < ApplicationController
         elsif @tweet.deletekey == params[:key] and @tweet.category == "善行"
           @tweet.destroy
           redirect_to action: "zenkouindex"
+          flash[:tweetdelete] = "善行投稿を消しました"
         else 
           redirect_back(fallback_location: root_path)
           flash[:notice] = "削除キーが違います"
-          flash[:tweetdelete] = "懺悔投稿を消しました"
         end
       end
 
