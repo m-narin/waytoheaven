@@ -172,13 +172,15 @@
             <% end %>
             <div class="like">
               <div class="see">閲覧数 = (<%=  @tweet.impressionist_count(:filter=>:session_hash) %>)</div>
-              <div class="word">赦す</div>
-              <div class="btn">
-                <%= button_to '', tweet_likes_path(@tweet), :class => 'thankbtn' %>
-              </div>
-              
-              <div class="likenumber">
-                (<%= @tweet.likes.count %>)
+              <div class = "like_contents">
+                <div class="word">赦す</div>
+                <div class="btn">
+                  <%= button_to '', tweet_likes_path(@tweet), :class => 'thankbtn' %>
+                </div>
+                
+                <div class="likenumber">
+                  (<%= @tweet.likes.count %>)
+                </div>
               </div>
             </div>
             </div>
@@ -415,13 +417,15 @@
             <% end %>
             <div class="like">
               <div class="see">閲覧数 = (<%=  @tweet.impressionist_count(:filter=>:session_hash) %>)</div>
-              <div class="word">感謝する</div>
-              <div class="btn">
-                <%= button_to '', tweet_likes_path(@tweet), :class => 'thankbtn' %>
-              </div>
-              
-              <div class="likenumber">
-                (<%= @tweet.likes.count %>)
+              <div class = "like_contents">
+                <div class="word">感謝する</div>
+                <div class="btn">
+                  <%= button_to '', tweet_likes_path(@tweet), :class => 'thankbtn' %>
+                </div>
+                
+                <div class="likenumber">
+                  (<%= @tweet.likes.count %>)
+                </div>
               </div>
             </div>
             </div>
@@ -449,6 +453,7 @@
       <%= f.submit 'コメントを送る', class: 'btn btn-success'%><br><br><br>
     <% end %>
   </div>
+  
   <div class="commenttop">コメント一覧</div>
   <% @comments.each do |c| %>
   <div class="commentsshow">

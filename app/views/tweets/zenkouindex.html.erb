@@ -8,17 +8,18 @@
     <div class="indextitle">
     <a href="/zenkoutweets/"><img src="/images/angel.png" width="50px" height="50px"></a>
     </div>
-    <div class="search_box">
-      <%= form_tag({controller:"tweets",action:"zenkouindex"}, method: :get) do %>
-      <%= submit_tag '🔎'  %>
-      <%= text_field_tag :search %>
-    <% end %>
-    </div>
     <nav><a href="/about">About</a></nav>
     <nav><a href="/hells">Hells</a></nav>
     <nav><a href="/heaven">Heaven</a></nav>
     <nav><a href="/links">Links</a></nav>
   </header>
+
+  <div class="search_box">
+      <%= form_tag({controller:"tweets",action:"zenkouindex"}, method: :get) do %>
+      <%= submit_tag '🔎'  %>
+      <%= text_field_tag :search %>
+    <% end %>
+  </div>
 
   <div class="heart">
     <img src="/images/heart.png" width="20px" height="20px">
@@ -188,19 +189,23 @@
             <% end %>
             <div class="like">
               <div class="see">閲覧数 = (<%=  t.impressionist_count(:filter=>:session_hash) %>)</div>
-              <div class="word">感謝する</div>
-              <div class="btn">
-                <%= button_to '', tweet_likes_path(t), :class => 'thankbtn' %>
+              <div class = "like_contents">
+                <div class="word">感謝する</div>
+                <div class="btn">
+                  <%= button_to '', tweet_likes_path(t), :class => 'thankbtn' %>
+                </div>
+                
+                <div class="likenumber">
+                  (<%= t.likes.count %>)
+                </div>
               </div>
-              
-              <div class="likenumber">
-                (<%= t.likes.count %>)
-              </div>
-              <div class="commentbtn">
-                <a href="/tweets/<%= t.id %>"><img src="/images/comment.jpg" width="30px" height="30px"></a>
-              </div>
-              <div class="commentnumber">
-                (<%= t.comments.count %>)
+              <div class = "comment_contents">
+                <div class="commentbtn">
+                  <a href="/tweets/<%= t.id %>"><img src="/images/comment.jpg" width="30px" height="30px"></a>
+                </div>
+                <div class="commentnumber">
+                  (<%= t.comments.count %>)
+                </div>
               </div>
             </div>
           </div>
@@ -332,19 +337,23 @@
             <% end %>
           <div class="like">
             <div class="see">閲覧数 = (<%=  t.impressionist_count(:filter=>:session_hash) %>)</div>
-            <div class="word">感謝する</div>
-            <div class="btn">
-                <%= button_to '', tweet_likes_path(t), :class => 'thankbtn' %>
+            <div class = "like_contents">
+              <div class="word">感謝する</div>
+              <div class="btn">
+                  <%= button_to '', tweet_likes_path(t), :class => 'thankbtn' %>
+              </div>
+              
+              <div class="likenumber">
+                (<%= t.likes.count %>)
+              </div>
             </div>
-            
-            <div class="likenumber">
-              (<%= t.likes.count %>)
-            </div>
-            <div class="commentbtn">
-              <a href="/tweets/<%= t.id %>"><img src="/images/comment.jpg" width="30px" height="30px"></a>
-            </div>
-            <div class="commentnumber">
-              (<%= t.comments.count %>)
+            <div class = "comment_contents">
+              <div class="commentbtn">
+                <a href="/tweets/<%= t.id %>"><img src="/images/comment.jpg" width="30px" height="30px"></a>
+              </div>
+              <div class="commentnumber">
+                (<%= t.comments.count %>)
+              </div>
             </div>
           </div>
         </div>
