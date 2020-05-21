@@ -1,6 +1,5 @@
 class TweetsController < ApplicationController
 
-    impressionist :actions=> [:show]
     def zangeindex
       @see = See.find_by(ip: request.remote_ip)
       if @see
@@ -64,12 +63,10 @@ class TweetsController < ApplicationController
       end
   
       def show
-        
         @tweet = Tweet.find(params[:id])
         @comments = @tweet.comments
         @comment = Comment.new
         @like = Like.new
-        impressionist(@tweet, nil, unique: [:impressionable_id, :ip_address])
       end
   
       def create
