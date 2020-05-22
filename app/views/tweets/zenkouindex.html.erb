@@ -14,16 +14,17 @@
     <nav><a href="/links">Links</a></nav>
   </header>
 
-  <div class="search_box">
-      <%= form_tag({controller:"tweets",action:"zenkouindex"}, method: :get) do %>
-      <%= submit_tag '🔎'  %>
-      <%= text_field_tag :search %>
-    <% end %>
-  </div>
-
   <div class="heart">
     <img src="/images/heart.png" width="20px" height="20px">
   </div>
+
+  <div class="search_box">
+    <%= form_tag({controller:"tweets",action:"zenkouindex"}, method: :get) do %>
+    <%= submit_tag '🔎'  %>
+    <%= text_field_tag :search %>
+  <% end %>
+  </div>
+  <br>
 
   <% if flash[:zenkoucreate] %>
       <script>
