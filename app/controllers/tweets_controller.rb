@@ -71,7 +71,7 @@ class TweetsController < ApplicationController
   
       def create
         @tweet = Tweet.new(tweet_params)
-        @tweet.hellnumber = rand(7)
+        @tweet.hellnumber = rand(8)
         @tweet.heavennumber = rand(1..5)
         if @tweet.save and @tweet.category == "善行" 
             redirect_to action: "zenkouindex"
