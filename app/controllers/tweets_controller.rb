@@ -114,8 +114,8 @@ class TweetsController < ApplicationController
       def heaven
       end
         
-         private
-         #セキュリティのため、許可したカラムだけ取ってくるようにする
+        private
+        #セキュリティのため、許可したカラムだけ取ってくるようにする
       def tweet_params
         params.require(:tweet).permit(:title, :content, :category, :name, :deletekey)
       end
